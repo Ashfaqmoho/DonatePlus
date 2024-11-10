@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+body{
+    height: 100vh;
+}
+
+
+.main-header{
+    background-color: grey;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2%;
+    height: 10vh;
+}
+
+.header-left{
+    font-size: 22px;
+    font-weight: bold;
+    font-family: monospace;
+    letter-spacing: 1px;
+}
+
+.header-right .header-btn{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6vw;
+}
+
+li{
+    list-style-type: none;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
