@@ -6,6 +6,7 @@
 
 body{
     height: 100vh;
+    overflow: hidden;
 }
 
 
@@ -40,4 +41,12 @@ a{
     text-decoration: none;
     color: black;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.banner-img{
+    width: 100vw;
+    height: 70vh;
+    margin-top: 1%;
+    object-fit: cover;
+    object-position: center;
 }
