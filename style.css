@@ -20,10 +20,20 @@ body{
 }
 
 .header-left{
-    font-size: 22px;
+    font-size: 28px;
     font-weight: bold;
     font-family: monospace;
     letter-spacing: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: cursive;
+}
+
+.header-logo{
+    width: 100px;
+    height: 100px;
+    margin-top: 15px;
 }
 
 .header-right .header-btn{
