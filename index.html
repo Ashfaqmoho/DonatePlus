@@ -12,6 +12,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Orbitron:wght@600;700;800;900&display=swap"
         rel="stylesheet" />
+        <script src="script.js"></script>
 </head>
 
 <body>
@@ -19,19 +20,16 @@
     <header class="main-header">
         <div class="header-left">
             <!-- logo -->
-                    <!-- logo ekak danna eka size eka ehema denna -->
-                     <img class="header-logo" src="img/logo.jpg" alt="logo">
-            <!-- DonatePlus text -->
+            <img class="header-logo" src="img/logo.jpg" alt="logo">
             <p>DonatePlus</p>
         </div>
         <div class="header-right">
             <!-- other buttons -->
             <ul class="header-btn">
-                <!-- button valata href pages eva link karanna -->
                 <li><a href="#">HOME</a></li>
                 <li><a href="#">ABOUT</a></li>
                 <li><a href="#">HELP</a></li>
-                <li><a href="../admin/adminlogin.html">ADMIN</a></li>
+                <li><a href="admin/adminlogin.html">ADMIN</a></li>
             </ul>
         </div>
     </header>
@@ -40,23 +38,41 @@
     <div class="main-body">
         <div class="home-img">
             <div class="home-content">
-            <img class="banner-img" src="img/FosterCareBanner.jpg" alt="banner01">
-            <div class="banner-text">
-        <h1>“Happiness doesn’t result from what we get, but from what we give".</h1>
+                <img class="banner-img" src="img/FosterCareBanner.jpg" alt="banner01">
+                <div class="banner-text">
+                    <h1>“Happiness doesn't result from what we get, but from what we give"</h1>
 
-    <div class="home-btn">
-        <center>
-        <button class="pushable">
-            <span class="front">
-            DONATE N0W
-            </span>
-          </button>
-</center>
-    </div>
+                    <div class="home-btn">
+                        <center>
+                            <button class="pushable" onclick="gotoDonation()">
+                                <span class="front">
+                                    DONATE NOW
+                                </span>
+                            </button>
+                        </center>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
+
+    <!-- Donation Page -->
+     <div class="donation-body" id="donation-body">
+             <h1>Make a Donation</h1>
+             <!-- form -->
+             <form>
+                 <label for="fname">First Name:</label><br>
+                 <input type="text" id="fname" name="fname"><br>
+                 <label for="lname">Last Name:</label><br>
+                 <input type="text" id="lname" name="lname"><br>
+                 <label for="email">Email:</label><br>
+                 <input type="text" id="email" name="email"><br>
+                 <label for="amount">Amount:</label><br>
+                 <input type="text" id="amount" name="amount"><br>
+                 <input type="submit" value="Submit">
+             </form>
+
+     </div>
 </body>
 
 </html>

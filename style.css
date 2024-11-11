@@ -1,16 +1,16 @@
-*{
+* {
     margin: 0;
     box-sizing: border-box;
     padding: 0;
 }
 
-body{
+body {
     height: 100vh;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 
-.main-header{
+.main-header {
     background-color: rgb(231, 221, 231);
     display: flex;
     justify-content: space-between;
@@ -20,7 +20,7 @@ body{
     position: sticky;
 }
 
-.header-left{
+.header-left {
     font-size: 28px;
     font-weight: bold;
     font-family: monospace;
@@ -32,19 +32,19 @@ body{
   
 }
 
-.header-logo{
+.header-logo {
     width: 100px;
     height: 100px;
     margin-top: 15px;
 
 }
+
 .header-right ul {
     display: flex;
     gap: 20px;
 }
 
-
-.header-right .header-btn{
+.header-right .header-btn li {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -54,58 +54,56 @@ body{
     transition: background-color 0.3s ease;
     font-size: 18px;
     background-color: rgb(224, 224, 235);
-    border-radius: 10px;
+    border-radius: 5px;
     color: black;
     padding: 10px 20px;
-    margin: 20px;
+    margin: 10px;
     cursor: pointer;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-    display: flex;
-    column-gap: 40px;
-    gap: 40px;
-    justify-content: space-between;
-    align-items: center;
+    column-gap: 30px;
     outline-offset: 4px;
-    font-weight: bold;
-
-
 }
-.header-right .header-btn:hover{
+
+.header-right .header-btn li:hover {
     background-color: rgb(212, 36, 101);
-    border-radius: 0.2rem;
-    transition: 0.2s all linear;
+    border-radius: 0.5rem;
+    transition: 0.5s all linear;
 }
 
-li{
+li {
     list-style-type: none;
 }
 
-a{
+a {
     text-decoration: none;
     color: black;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.banner-img{
+
+.banner-img {
     width: 100vw;
-    height: 70vh;
-    margin-top: 1%;
+    height: 72vh;
+    margin: 10px 0px;
     object-fit: cover;
     object-position: center;
 }
+
 .banner-text h1 {
     font-size: 2em;
     color: #811a1a;
     text-align: left;
-   margin-bottom: 1rem;
-   position: absolute;
-   top: 20%;
-   left: 5%;
-   max-width: 50%;
-   
+    margin-bottom: 1rem;
+    position: absolute;
+    top: 35%;
+    left: 5%;
+    max-width: 40%;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    letter-spacing: 1px;
+    line-height: 1.5;
 }
 
-  .pushable {
+.pushable {
     background: hsl(340, 60%, 33%);
     border-radius: 12px;
     border: none;
@@ -113,9 +111,10 @@ a{
     cursor: pointer;
     outline-offset: 4px;
     position: relative;
-   
-  }
-  .front {
+
+}
+
+.front {
     display: block;
     padding: 15px 42px;
     border-radius: 15px;
@@ -125,16 +124,21 @@ a{
     transform: translateY(-6px);
     text-decoration: double;
     transform: translateY(-6px);
-    
-  }
-  .pushable:hover .front {
-    background: hsl(210, 18%, 4%); /* Change to any color you like */
-    color: #fcfcfc; /* Optional: Change text color on hover */
+
 }
 
-  .pushable:active .front {
+.pushable:hover .front {
+    background: hsl(210, 18%, 4%);
+    /* Change to any color you like */
+    color: #fcfcfc;
+    /* Optional: Change text color on hover */
+}
+
+.pushable:active .front {
     transform: translateY(-2px);
-  }
-  
+}
 
-
+.donation-body{
+    height: 100vh;
+    padding-top: 20px;
+}
