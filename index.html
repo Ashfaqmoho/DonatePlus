@@ -12,7 +12,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Orbitron:wght@600;700;800;900&display=swap"
         rel="stylesheet" />
-        <script src="script.js"></script>
+    <script src="script.js"></script>
 </head>
 
 <body>
@@ -36,43 +36,47 @@
 
     <!-- body -->
     <div class="main-body">
-        <div class="home-img">
-            <div class="home-content">
-                <img class="banner-img" src="img/FosterCareBanner.jpg" alt="banner01">
-                <div class="banner-text">
-                    <h1>“Happiness doesn't result from what we get, but from what we give"</h1>
-
-                    <div class="home-btn">
-                        <center>
-                            <button class="pushable" onclick="gotoDonation()">
-                                <span class="front">
-                                    DONATE NOW
-                                </span>
-                            </button>
-                        </center>
-                    </div>
+        <div class="home-content">
+            <div class="home-img">
+                <!-- <img class="banner-img" src="img/banner-01.png" alt="banner image"> -->
+                <div class="mySlides fade">
+                    <img src="img/banner-01.png" class="banner-img">
                 </div>
+                <div class="mySlides fade">
+                    <img src="img/banner-02.png" class="banner-img">
+                </div>
+                <div class="mySlides fade">
+                    <img src="img/banner-03.png" class="banner-img">
+                </div>
+            </div>
+
+            <div class="home-btn">
+                <button class="pushable" onclick="gotoDonation()">
+                    <span class="front">
+                        DONATE NOW
+                    </span>
+                </button>
             </div>
         </div>
     </div>
 
     <!-- Donation Page -->
-     <div class="donation-body" id="donation-body">
-             <h1>Make a Donation</h1>
-             <!-- form -->
-             <form>
-                 <label for="fname">First Name:</label><br>
-                 <input type="text" id="fname" name="fname"><br>
-                 <label for="lname">Last Name:</label><br>
-                 <input type="text" id="lname" name="lname"><br>
-                 <label for="email">Email:</label><br>
-                 <input type="text" id="email" name="email"><br>
-                 <label for="amount">Amount:</label><br>
-                 <input type="text" id="amount" name="amount"><br>
-                 <input type="submit" value="Submit">
-             </form>
+    <div class="donation-body" id="donation-body">
+        <h1>Make a Donation</h1>
+        <!-- form -->
+        <form>
+            <label for="fname">First Name:</label><br>
+            <input type="text" id="fname" name="fname"><br>
+            <label for="lname">Last Name:</label><br>
+            <input type="text" id="lname" name="lname"><br>
+            <label for="email">Email:</label><br>
+            <input type="text" id="email" name="email"><br>
+            <label for="amount">Amount:</label><br>
+            <input type="text" id="amount" name="amount"><br>
+            <input type="submit" value="Submit">
+        </form>
 
-     </div>
+    </div>
 </body>
 
 </html>

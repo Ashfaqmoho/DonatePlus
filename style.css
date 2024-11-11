@@ -29,7 +29,7 @@ body {
     justify-content: center;
     align-items: center;
     font-family: cursive;
-  
+
 }
 
 .header-logo {
@@ -79,32 +79,59 @@ a {
     color: black;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-a:hover{
+
+a:hover {
     color: white;
+}
+
+.home-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
 }
 
 
 .banner-img {
-    width: 100vw;
+    width: 90vw;
     height: 72vh;
     margin: 10px 0px;
+    padding: auto;
     object-fit: cover;
     object-position: center;
 }
 
-.banner-text h1 {
-    font-size: 2em;
-    color: #811a1a;
-    text-align: left;
-    margin-bottom: 1rem;
-    position: absolute;
-    top: 35%;
-    left: 5%;
-    max-width: 40%;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    letter-spacing: 1px;
-    line-height: 1.5;
+.home-img {
+    position: relative;
+    margin: auto;
 }
+
+.mySlides {
+    display: none;
+
+}
+
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1s;
+    animation-name: fade;
+    animation-duration: 2s;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0.8;
+    }
+
+
+    100% {
+        opacity: 1;
+    }
+}
+
+
+
+
 
 .pushable {
     background: hsl(340, 60%, 33%);
@@ -141,7 +168,7 @@ a:hover{
     transform: translateY(-2px);
 }
 
-.donation-body{
+.donation-body {
     height: 100vh;
     padding-top: 20px;
 }
