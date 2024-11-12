@@ -37,8 +37,8 @@ body {
 .header-logo {
     width: 100px;
     height: 100px;
-    margin-top: 15px;
-    filter: contrast(200%);
+    margin-top: 5px;
+    margin-right: 0px;
 }
 
 .header-right ul {
