@@ -7,17 +7,19 @@
 body {
     height: 100vh;
     overflow-x: hidden;
+    background: url(img/img-noise-361x370.png);
 }
 
 
 .main-header {
-    background-color: rgb(231, 221, 231);
+    background: #111827;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 2%;
     height: 10vh;
     position: sticky;
+    color: white;
 }
 
 .header-left {
@@ -36,7 +38,7 @@ body {
     width: 100px;
     height: 100px;
     margin-top: 15px;
-
+    filter: contrast(200%);
 }
 
 .header-right ul {
@@ -99,6 +101,7 @@ a:hover {
     padding: auto;
     object-fit: cover;
     object-position: center;
+    border-radius: 10px;
 }
 
 .home-img {

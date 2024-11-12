@@ -1,0 +1,120 @@
+/* General Styling */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* About Section Styling */
+.about-section {
+    padding: 4rem 1rem;
+    background: #111827;
+    font-family: Arial, sans-serif;
+    color: #f3f4f6; 
+}
+
+/* Title Styling */
+.about-title-container {
+    text-align: center;
+    margin-bottom: 2rem;
+    text-decoration: 1px yellow  underline;
+}
+
+.about-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #fbbf24; /* Golden color */
+    text-transform: uppercase;
+}
+
+.about-description {
+    color: #e5e7eb;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Content Container */
+.about-content-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* About Item Styling */
+.about-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.reverse {
+    flex-direction: row-reverse;
+}
+
+.about-image {
+    flex: 1;
+    max-width: 40%;
+}
+
+.about-img {
+    width: 30vw;
+    height: 40vh;
+    object-fit: cover;
+    /* max-width: 600px; */
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.about-img:hover {
+    transform: scale(1.05);
+}
+
+.about-text {
+    flex: 1;
+    text-align: left;
+}
+
+.about-text h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fbbf24;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    color: #d1d5db;
+    line-height: 1.8;
+}
+
+/* Highlighted Text */
+.highlight {
+    color: #fbbf24;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about-item {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-text {
+        text-align: center;
+    }
+
+    .about-img {
+        max-width: 100%;
+    }
+
+    .about-title {
+        font-size: 2rem;
+    }
+
+    .about-description {
+        font-size: 1rem;
+    }
+}
