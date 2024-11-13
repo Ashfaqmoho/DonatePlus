@@ -32,6 +32,9 @@ body {
     line-height: 1.8;
     max-width: 800px;
     margin: 0 auto;
+    text-align: justify;
+
+
 }
 
 /* Content Container */
@@ -46,7 +49,8 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 2rem;
+    justify-content: space-between;
+    gap: 5rem;
     margin-bottom: 2rem;
 }
 
@@ -56,7 +60,10 @@ body {
 
 .about-image {
     flex: 1;
-    max-width: 40%;
+    max-width: 100%;
+    
+   
+
 }
 
 .about-img {
@@ -76,18 +83,23 @@ body {
 .about-text {
     flex: 1;
     text-align: left;
+    text-align: justify;
+   
+    
 }
 
 .about-text h3 {
     font-size: 2rem;
     font-weight: 700;
     color: #fbbf24;
+    text-align: justify;
 }
 
 .about-text p {
     font-size: 1.1rem;
     color: #d1d5db;
     line-height: 1.8;
+    text-align: justify;
 }
 
 /* Highlighted Text */
