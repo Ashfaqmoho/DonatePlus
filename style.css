@@ -7,7 +7,6 @@
 body {
     height: 100vh;
     overflow-x: hidden;
-    background: url(img/img-noise-361x370.png);
 }
 
 
@@ -91,6 +90,8 @@ a:hover {
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
+    background: url(img/img-noise-361x370.png);
+
 }
 
 
@@ -102,7 +103,7 @@ a:hover {
     object-fit: cover;
     object-position: center;
     border-radius: 10px;
-    box-shadow: 1px 1px 10px rgba(0,0,0,0.6);
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.6);
 }
 
 .home-img {
@@ -174,5 +175,238 @@ a:hover {
 
 .donation-body {
     height: 100vh;
-    padding-top: 20px;
+    background-image: url(img/background-img.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 1px 10px rgba(255, 255, 255, 0.26);
 }
+
+.donation-body .container {
+    width: 70vw;
+    height: 90vh;
+    background: rgba(255, 255, 255, .1);
+    border: 2px solid rgba(255, 255, 255, .2);
+    box-shadow: 0 0 10px rgb(0, 51, 147);
+    backdrop-filter: blur(50px);
+    border-radius: 10px;
+    color: #fff;
+    padding: 10px 40px;
+    margin: 0px auto;
+    
+}
+
+.donation-body .container h1 {
+    font-size: 2.5em;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.donation-part form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-direction: row;
+
+}
+.input-box {
+    display: flex;
+    flex-direction: column; /* Stack inputs vertically */
+    align-items: center; /* Center horizontally */
+    gap: 20px; /* Space between input fields */
+    margin-bottom: 20px; /* Add space between input boxes */
+}
+
+.input-field {
+    width: 90%; /* Adjust width as needed */
+    max-width: 450px; /* Set a max width to control input field size */
+    height: 50px;
+    position: relative;
+}
+
+.input-field input,
+.input-field select {
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, .2);
+    outline: none;
+    font-size: 16px;
+    color: #fff;
+    border-radius: 6px;
+    padding: 12px 15px 12px 45px; /* Add padding to make space for the icon */
+    appearance: none;
+    line-height: 1.5;
+}
+
+::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+    opacity: 1;
+}
+
+.input-field select {
+    padding-left: 45px; /* Add space to prevent merging */
+}
+
+.input-field i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.input-field button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.input-field button i {
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+
+.select-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+    padding: 10px 10px;
+    gap: 15px;
+}
+
+.selection-img {
+    width: 120px;
+    height: 100px;
+    object-fit: cover;
+    border: none;
+    border-radius: 20px;
+    transition: transform 0.5s;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.selection-img:hover {
+    transform: scale(1.1);
+}
+
+.selection-img.selected {
+    transform: scale(1.1);/* Keep the scale effect when selected */
+    box-shadow: 0px 0px 10px rgba(0, 255, 0, 1);
+}
+.left{
+    margin-left: 50px;
+}
+.right{
+    margin-right: 0px;
+    margin-left: 0px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 50vw;
+}
+#map {
+    height: 350px;
+    width: 70%;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 10px;
+}
+
+.submit-btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    background-color: #111827;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    letter-spacing: 0.1rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+    margin-right: 20px;
+    box-shadow: 0 0 10px rgb(0, 51, 147);
+}
+
+.submit-btn:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    transition: all 0.3s ease;
+    border-radius: 50px;
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: 100% 50%;
+}
+
+.submit-btn:hover {
+    color: #111827;
+    background-color: #fcfcfc;
+    border-color: #111827;
+}
+
+.submit-btn:hover:before {
+    transform: scaleX(1);
+    transform-origin: 0% 50%;
+}
+
+.submit-btn:focus {
+    outline: none;
+}
+
+.footer {
+    background-color: #111827; /* Dark background */
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer p {
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+.social-icons {
+    margin-top: 10px;
+}
+
+.social-icon {
+    color: white;
+    font-size: 20px;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.social-icon:hover {
+    color: #3498db; /* Blue color on hover */
+}
+
+
+
+

@@ -14,6 +14,8 @@
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Orbitron:wght@600;700;800;900&display=swap"
         rel="stylesheet" />
     <script src="script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="stylesheet" href="about.css">
     <link rel="stylesheet" href="chatbot.css">
 </head>
@@ -30,8 +32,8 @@
             <!-- other buttons -->
             <ul class="header-btn">
                 <li><a href="#">HOME</a></li>
-                <li><a href="#about">ABOUT</a></li>
-                <li><a href="#">HELP</a></li>
+                <li><a onclick="gotoAbout()">ABOUT</a></li>
+                <li><a onclick="gotoChatBot()">HELP</a></li>
                 <li><a href="admin/adminlogin.html">ADMIN</a></li>
             </ul>
         </div>
@@ -41,7 +43,6 @@
     <div class="main-body">
         <div class="home-content">
             <div class="home-img">
-                <!-- <img class="banner-img" src="img/banner-01.png" alt="banner image"> -->
                 <div class="mySlides fade">
                     <img src="img/banner-01.png" class="banner-img">
                 </div>
@@ -64,80 +65,207 @@
     </div>
 
     <!-- About Page -->
-<section id="about" class="about-section">
+    <section id="about" class="about-section">
 
-    <!-- Section Title -->
-    <div class="about-title-container">
-        <h2 class="about-title">About Us</h2>
-    </div>
-
-    <!-- Content Container -->
-    <div class="about-content-container">
-        <!-- Item 1: Image on Left, Text on Right -->
-        <div class="about-item">
-            <!-- Image on Left -->
-            <div class="about-image">
-                <img src="img/young-cheerful-volunteer-working-charity-600nw-2501864583.webp" alt="about-image" class="about-img">
-            </div>
-            <!-- Text on Right -->
-            <div class="about-text">
-                <h3>Welcome All<span class="highlight"></span></h3>
-                <p>
-                     Welcome to our Donate+ website.
-                     We believe in the power of giving and the positive impact it can have on lives and communities. 
-                     Our mission is to make it easy for people to donate essential items like food, clothing, and technical supplies to those in need. 
-                     Whether you have extra food to share, clothes you no longer wear, or tech items that could help others, our platform connects generous donors with organizations and individuals who can benefit. Join us in creating a community of compassion and support, where each donation brings hope and a brighter future.
-                </p>
-            </div>
+        <!-- Section Title -->
+        <div class="about-title-container">
+            <h2 class="about-title">About Us</h2>
         </div>
 
-        <!-- Item 2: Image on Right, Text on Left -->
-        <div class="about-item reverse">
-            <!-- Image on Right -->
-            <div class="about-image">
-                <img src="img/images.jpeg" alt="about-image" class="about-img">
+        <!-- Content Container -->
+        <div class="about-content-container" id="about-content-container">
+            <!-- Item 1: Image on Left, Text on Right -->
+            <div class="about-item">
+                <div class="about-image">
+                    <img src="img/young-cheerful-volunteer-working-charity-600nw-2501864583.webp" alt="about-image"
+                        class="about-img">
+                </div>
+                <div class="about-text">
+                    <h3>Welcome All<span class="highlight"></span></h3>
+                    <p>
+                        Welcome to our Donate+ website. We believe in the power of giving and the positive impact it can
+                        have on lives and communities. Our mission is to make it easy for people to donate essential
+                        items like food, clothing, and technical supplies to those in need. Whether you have extra food
+                        to share, clothes you no longer wear, or tech items that could help others, our platform
+                        connects generous donors with organizations and individuals who can benefit. Join us in creating
+                        a community of compassion and support, where each donation brings hope and a brighter future.
+                    </p>
+                </div>
             </div>
-            <!-- Text on Left -->
-            <div class="about-text">
-                <h3>Join with Us & make a donetion</h3>
-                <p>
-                    At the Donation Club, we’ve worked hard to create a platform that bridges the gap between generous donors and those in need. Our team has developed an easy-to-use website where anyone can donate essential items like food, clothing, and technical supplies. Over time, we’ve connected countless donations to families and organizations that benefit directly from your support, making a real difference in our community. We handle everything from ensuring items reach the right people to expanding our reach for greater impact. Every donation matters, and together, we’re making a meaningful change."
-                </p>
+
+            <!-- Item 2: Image on Right, Text on Left -->
+            <div class="about-item reverse">
+                <div class="about-image">
+                    <img src="img/images.jpeg" alt="about-image" class="about-img">
+                </div>
+                <div class="about-text">
+                    <h3>Join with Us & make a donation</h3>
+                    <p>
+                        At the Donation Club, we've worked hard to create a platform that bridges the gap between
+                        generous donors and those in need. Our team has developed an easy-to-use website where anyone
+                        can donate essential items like food, clothing, and technical supplies. Over time, we've
+                        connected countless donations to families and organizations that benefit directly from your
+                        support, making a real difference in our community. We handle everything from ensuring items
+                        reach the right people to expanding our reach for greater impact. Every donation matters, and
+                        together, we're making a meaningful change."
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
-</section>
-
-
+    </section>
 
     <!-- Donation Page -->
     <div class="donation-body" id="donation-body">
-        <h1>Make a Donation</h1>
         <!-- form -->
-        <form>
-            <label for="fname">First Name:</label><br>
-            <input type="text" id="fname" name="fname"><br>
-            <label for="lname">Last Name:</label><br>
-            <input type="text" id="lname" name="lname"><br>
-            <label for="email">Email:</label><br>
-            <input type="text" id="email" name="email"><br>
-            <label for="amount">Amount:</label><br>
-            <input type="text" id="amount" name="amount"><br>
-            <input type="submit" value="Submit">
-        </form>
+        <div class="container">
+            <h1>Make a Donation</h1>
+            <div class="donation-part">
+                <form id="donation-form">
+                    <div class="left">
 
+                        <div class="input-box">
+                            <div class="input-field">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                            </div>
+                        </div>
+                        <div class="input-box">
+                            <div class="input-field">
+                                <i class="fas fa-envelope"></i>
+                                <input type="text" id="email" name="email" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="input-box">
+                            <div class="input-field">
+                                <i class="fas fa-phone"></i>
+                                <input type="number" id="phone" name="phone" placeholder="Phone Number" required>
+                            </div>
+                        </div>
+                        <div class="input-box">
+                            <div class="input-field">
+                                <i class="fa fa-archive" aria-hidden="true"></i>
+                                <input type="text" id="type" name="type" placeholder="Type : FOOD / STATIONERY / DRESS"
+                                    required>
+                            </div>
+                        </div>
+
+                        <div class="input-box">
+                            <div class="input-field">
+                                <i class="fa fa-hourglass" aria-hidden="true"></i>
+                                <input type="number" id="quantity" name="quantity" placeholder="Quantity" required>
+                            </div>
+                        </div>
+                        <div class="select-img">
+                            <div class="img-1"><img class="selection-img" id="img1" src="img/food.jpg" alt="food"></div>
+                            <div class="img-2"><img class="selection-img" id="img2" src="img/stationery.jpg"
+                                    alt="stationery">
+                            </div>
+                            <div class="img-3"><img class="selection-img" id="img3" src="img/dress.jpg" alt="dress">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div class="input-box" style="width: 400px;">
+                            <div class="input-field">
+                                <i class="fa fa-location-arrow" aria-hidden="true"></i>
+                                <input type="text" name="location" placeholder="Enter city name" />
+                                <button id="searchButton" type="button">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                    <!-- Search icon inside the button -->
+                                </button>
+                            </div>
+                        </div>
+                        <div id="map"></div>
+                        <center>
+                            <input class="submit-btn" type="submit" value="Submit">
+
+                        </center>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
     </div>
 
-    
     <!-- Help Page -->
-     <div class="container">
+    <div class="help-container" id="help-container">
         <div class="title">Let's Chat</div>
         <div class="chat" id="chat"></div>
-       <input type="text" class="input" id="input" placeholder="Type your message...">
-            <button class="button" id = "button" ><i class = "fa-brands fa-telegram"></i></button>
-   </div>
-     <script src="chatbot.js"></script>
-     
+        <input type="text" class="input" id="input" placeholder="Type your message...">
+        <button class="button" id="button"><i class="fa-brands fa-telegram"></i></button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 DonationPlus. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="#" class="social-icon"><i class="fa-brands fa fa-facebook"></i></a>
+                <a href="#" class="social-icon"><i class="fa-brands fa fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class=" fa-brands fa fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+    
+
+    <script src="chatbot.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const images = document.querySelectorAll('.selection-img');
+
+            images.forEach(image => {
+                image.addEventListener('click', function () {
+                    images.forEach(img => img.classList.remove('selected'));
+                    this.classList.add('selected');
+                });
+            });
+
+            const map = L.map('map').setView([6.9157, 79.9605], 15);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19
+            }).addTo(map);
+
+            L.marker([6.9157, 79.9605]).addTo(map)
+                .bindPopup("CINEC CAMPUS")
+                .openPopup();
+
+            const locationInput = document.querySelector('input[name="location"]');
+            const searchButton = document.querySelector('#searchButton');
+
+            const searchLocation = () => {
+                const city = locationInput.value.trim();
+                if (city) {
+                    const apiUrl = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(city)}&format=json`;
+                    fetch(apiUrl)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.length > 0) {
+                                const { lat, lon } = data[0];
+                                map.setView([lat, lon], 15);
+                                L.marker([lat, lon]).addTo(map)
+                                    .bindPopup(city)
+                                    .openPopup();
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error fetching location data:', error);
+                        });
+                }
+            };
+
+            searchButton.addEventListener('click', searchLocation);
+
+            const form = document.querySelector('#donation-form');
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+                // Form submission logic here
+                alert('Donation form submitted!');
+            });
+        });
+    </script>
 </body>
 
 </html>

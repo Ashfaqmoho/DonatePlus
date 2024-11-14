@@ -1,29 +1,32 @@
-*{
+* {
     box-sizing: border-box;
 }
 
-body{
-    font-family: 'poppins',sans-serif;
-    background: #222831;
-
+body {
+    font-family: 'poppins', sans-serif;
+    background: #171717;
 }
 
-.container{
+.help-container {
     width: 600px;
     margin: 50px auto;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: #64646f33 0px 7px 29px 0px;
+    /* box-shadow: #64646f33 0px 7px 29px 0px; */
     background: #31363f;
+    /* background: #1b1d21; */
+
 }
-.title{
+
+.title {
     text-align: center;
     color: #ffffff;
     font-size: 24px;
     font-weight: bold;
-  
+
 }
-.chat{
+
+.chat {
     height: 400px;
     overflow-y: scroll;
     margin: 20px 0;
@@ -32,35 +35,42 @@ body{
     border-radius: 5px;
     background: #222831;
 }
-.message{
+
+.message {
     display: flex;
     align-items: center;
     margin: 10px 0;
-
+    color: black;
 }
-.user{
+
+.user {
     justify-content: flex-end;
 }
+
 .bot {
     justify-content: flex-start;
 }
-.avatar{
+
+.avatar {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    margin:0 10px;
+    margin: 0 10px;
 }
-.user.avatar{
+
+.user .avatar {
     order: 2;
     background: url("img/user.jpg");
     background-size: cover;
 }
-.bot.avatar{
+
+.bot .avatar {
     order: 1;
     background: url("img/telegram-bot-app.webp");
     background-size: cover;
 }
-.text{
+
+.text {
     max-width: 70%;
     padding: 10px;
     border-radius: 10px;
@@ -68,33 +78,40 @@ body{
     color: white;
 
 }
-.user.text{
+
+.user .text {
     background: #4a4d52;
 }
-.bot.text{
-background: #8c8c8e;
+
+.bot .text {
+    background: #8c8c8e;
 }
-.input{
+
+.input {
     flex-grow: 1;
     position: relative;
     width: 100%;
     padding: 10px;
-    border: 2px solid #cbcbce;
+    border: 2px solid #7a7a7a;
     border-radius: 5px;
-  font-size: 20px;
+    font-size: 20px;
     outline: none;
     padding: 10px;
     border-radius: 5px;
+    color: #171717;
 }
+
 .input-container {
     display: flex;
     align-items: center;
 }
-.input:focus{
+
+.input:focus {
     border-color: #8296d0;
     color: #1e1f1f;
 }
-.button{
+
+.button {
     position: absolute;
     width: 80px;
     padding: 1px;
@@ -109,15 +126,17 @@ background: #8c8c8e;
     outline: none;
     padding: 1px;
 }
-button i{
-font-size: 3rem;
+
+button i {
+    font-size: 3rem;
 }
-.button:hover{
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+
+.button:hover {
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
 
 }
-.chat::-webkit-scrollbar{
+
+.chat::-webkit-scrollbar {
     background: #bcbdc0;
     border-radius: 10px;
 }
-
