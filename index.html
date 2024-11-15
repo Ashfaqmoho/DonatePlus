@@ -120,9 +120,8 @@
         <div class="container">
             <h1>Make a Donation</h1>
             <div class="donation-part">
-                <form id="donation-form">
+                <form action="donate.php" id="donation-form" method="POST">
                     <div class="left">
-
                         <div class="input-box">
                             <div class="input-field">
                                 <i class="fas fa-user"></i>
@@ -132,7 +131,7 @@
                         <div class="input-box">
                             <div class="input-field">
                                 <i class="fas fa-envelope"></i>
-                                <input type="text" id="email" name="email" placeholder="Email">
+                                <input type="email" id="mail" name="mail" placeholder="Email" required>
                             </div>
                         </div>
                         <div class="input-box">
@@ -141,11 +140,19 @@
                                 <input type="number" id="phone" name="phone" placeholder="Phone Number" required>
                             </div>
                         </div>
+                        <div class="select-img">
+                            <div class="img-1"><img class="selection-img" id="img1" data-type="FOOD" src="img/food.jpg"
+                                    alt="food"></div>
+                            <div class="img-2"><img class="selection-img" id="img2" data-type="STATIONERY"
+                                    src="img/stationery.jpg" alt="stationery"></div>
+                            <div class="img-3"><img class="selection-img" id="img3" data-type="DRESS"
+                                    src="img/dress.jpg" alt="dress"></div>
+                        </div>
                         <div class="input-box">
                             <div class="input-field">
                                 <i class="fa fa-archive" aria-hidden="true"></i>
-                                <input type="text" id="type" name="type" placeholder="Type : FOOD / STATIONERY / DRESS"
-                                    required>
+                                <input type="text" id="type" name="type" placeholder="Type: Select above image"
+                                    readonly required>
                             </div>
                         </div>
 
@@ -155,34 +162,25 @@
                                 <input type="number" id="quantity" name="quantity" placeholder="Quantity" required>
                             </div>
                         </div>
-                        <div class="select-img">
-                            <div class="img-1"><img class="selection-img" id="img1" src="img/food.jpg" alt="food"></div>
-                            <div class="img-2"><img class="selection-img" id="img2" src="img/stationery.jpg"
-                                    alt="stationery">
-                            </div>
-                            <div class="img-3"><img class="selection-img" id="img3" src="img/dress.jpg" alt="dress">
-                            </div>
-                        </div>
+                        
                     </div>
                     <div class="right">
                         <div class="input-box" style="width: 400px;">
                             <div class="input-field">
                                 <i class="fa fa-location-arrow" aria-hidden="true"></i>
-                                <input type="text" name="location" placeholder="Enter city name" />
+                                <input type="text" id="address" name="address" placeholder="Enter city name" required>
                                 <button id="searchButton" type="button">
                                     <i class="fa fa-search" aria-hidden="true"></i>
-                                    <!-- Search icon inside the button -->
                                 </button>
                             </div>
                         </div>
-                        <div id="map"></div>
+                        <div id="map" style="height: 300px; width: 75%;"></div>
                         <center>
                             <input class="submit-btn" type="submit" value="Submit">
-
                         </center>
                     </div>
-
                 </form>
+
 
             </div>
         </div>
@@ -207,65 +205,106 @@
             </div>
         </div>
     </footer>
-    
+
 
     <script src="chatbot.js"></script>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const images = document.querySelectorAll('.selection-img');
-
+            const typeInput = document.querySelector('#type');
+            
             images.forEach(image => {
                 image.addEventListener('click', function () {
                     images.forEach(img => img.classList.remove('selected'));
                     this.classList.add('selected');
+                    typeInput.value = this.dataset.type; // Set the type value based on selected image
                 });
             });
-
-            const map = L.map('map').setView([6.9157, 79.9605], 15);
-
+    
+            // Initialize map with CINEC Campus location
+            const map = L.map('map').setView([6.9157, 79.9605], 15); // CINEC Campus location
+    
+            // Add OpenStreetMap tiles
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19
             }).addTo(map);
-
-            L.marker([6.9157, 79.9605]).addTo(map)
+    
+            // Add CINEC Campus marker (Blue)
+            const cinecMarker = L.marker([6.9157, 79.9605], { icon: L.icon({ iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png', iconSize: [25, 41], iconAnchor: [12, 41] }) }).addTo(map)
                 .bindPopup("CINEC CAMPUS")
                 .openPopup();
-
-            const locationInput = document.querySelector('input[name="location"]');
+    
+            const locationInput = document.querySelector('input[name="address"]');
             const searchButton = document.querySelector('#searchButton');
-
+    
+            // Search location when the user presses the search button
             const searchLocation = () => {
                 const city = locationInput.value.trim();
                 if (city) {
-                    const apiUrl = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(city)}&format=json`;
-                    fetch(apiUrl)
+                    const apiUrl = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(city)}&format=json&addressdetails=1`;
+    
+                    fetch(apiUrl, {
+                        headers: {
+                            'User-Agent': 'DonatePlus/1.0 (your-email@example.com)', // Use your own email or app name
+                            'Referer': 'https://your-site.com'
+                        }
+                    })
                         .then(response => response.json())
                         .then(data => {
                             if (data.length > 0) {
                                 const { lat, lon } = data[0];
+                                // Set map to the searched city
                                 map.setView([lat, lon], 15);
-                                L.marker([lat, lon]).addTo(map)
+                                
+                                // Remove any existing user markers before adding a new one
+                                map.eachLayer((layer) => {
+                                    if (layer instanceof L.Marker && layer !== cinecMarker) {
+                                        map.removeLayer(layer);
+                                    }
+                                });
+    
+                                // Add user location marker (Red)
+                                const userMarker = L.marker([lat, lon], {
+                                    icon: L.icon({
+                                        iconUrl: 'img/map-marker-2-32.png', 
+                                        iconSize: [32, 32], 
+                                        iconAnchor: [16, 32], 
+                                        popupAnchor: [0, -32] 
+                                    })
+                                }).addTo(map)
                                     .bindPopup(city)
                                     .openPopup();
+    
+                                locationInput.value = city;  // Automatically fill the city name in the input
+                            } else {
+                                alert('City not found!');
                             }
                         })
                         .catch(error => {
                             console.error('Error fetching location data:', error);
+                            alert('Error fetching location data');
                         });
                 }
             };
-
+    
             searchButton.addEventListener('click', searchLocation);
-
+    
+            // Handle form submission
             const form = document.querySelector('#donation-form');
             form.addEventListener('submit', (event) => {
-                event.preventDefault();
-                // Form submission logic here
-                alert('Donation form submitted!');
+                const addressInput = document.querySelector('input[name="address"]');
+                if (!addressInput.value.trim()) {
+                    event.preventDefault(); // Prevent form submission
+                    alert('Please search for a valid city before submitting.');
+                }
             });
         });
     </script>
+    
+
+
 </body>
 
 </html>
