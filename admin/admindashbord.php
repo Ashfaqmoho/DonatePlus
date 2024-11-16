@@ -86,6 +86,11 @@
     </thead>
 <tbody>
         <?php
+        session_start();
+        if (!isset($_SESSION['admin_logged_in']) || !$_SESSION['adadmin_logged_in']) {
+            header("Location: ../admin/adminlogin.html");
+            exit();
+        }
         // Database connection
         $servername = "localhost";
         $username = "root";
@@ -129,6 +134,7 @@
             echo "</tr>";
             
         }
+
 
         
         ?>

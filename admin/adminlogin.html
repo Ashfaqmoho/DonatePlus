@@ -8,16 +8,17 @@
     <link rel="stylesheet" href="adminlogin.css">
     <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core@latest/dist/ionic/ionic.esm.js"></script>
     <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core@latest/dist/ionic/ionic.js"></script>
-</head>
+
+    </head>
 
 <body>
     <div class="form-box">
-        <form action="">
+        <form onsubmit="return logintoadmin(event)">
             <h2>Admin LogIn</h2>
             <div class="inputbox">
                 <ion-icon name="mail-outline"></ion-icon>
-                <input type="email" id="email" placeholder=" " required>
-                <label for="email">Email</label>
+                <input type="text" id="username" placeholder=" " required>
+                <label for="username">username</label>
             </div>
             <div class="inputbox">
                 <ion-icon name="eye-off-outline" onclick="togglePassword()" id="eyeicon"></ion-icon>
@@ -48,6 +49,25 @@
                 eyeIcon.name = "eye-off-outline"; // Change to "eye-off" icon
             }
         }
+        
+        function logintoadmin(event) {
+            event.preventDefault(); // Prevent form from reloading the page
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            const adminUsername = "admin";
+            const adminPassword = "123";
+
+            if (username === adminUsername && password === adminPassword)  {
+                window.location.href = "../admin/admindashboard.php";
+            } else {
+                alert("Incorrect username or password.");
+            }
+            return false;//prevent from submission
+        }
+            
+    
+
     </script>
 </body>
 
