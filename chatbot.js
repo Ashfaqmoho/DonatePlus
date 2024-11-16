@@ -10,8 +10,8 @@ function chatbox(input){
         output = "My name is Jarvis, I am a chatbot.";
     } else if(input.includes("what can you do")){
     output = "i can chat with you and answer some simple questions.";
-    }else if(input.includes("Tell me a joke")){
-    output = "Why did the chicken go to the seance? to get to the other side.";
+    }else if(input.includes("what we can donate")){
+    output = "You can donate Foods,clothes,Stationary.";
     } else {
     output = "I'm sorry, I didn't understand that. please try something else.";
     }
