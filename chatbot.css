@@ -4,7 +4,7 @@
 
 body {
     font-family: 'poppins', sans-serif;
-    background: #171717;
+    background-image: url('img/istockphoto-1488335095-612x612.jpg') !important;
 }
 
 .help-container {
@@ -13,7 +13,7 @@ body {
     padding: 20px;
     border-radius: 10px;
     /* box-shadow: #64646f33 0px 7px 29px 0px; */
-    background: #31363f;
+    background: #000003fd;
     /* background: #1b1d21; */
 
 }
@@ -33,7 +33,7 @@ body {
     padding: 10px;
     border: 2px sold #545250;
     border-radius: 5px;
-    background: #222831;
+    background: #4272d2f4;
 }
 
 .message {
