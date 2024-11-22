@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="stylesheet" href="about.css">
     <link rel="stylesheet" href="chatbot.css">
-    
+
 </head>
 
 <body>
@@ -72,6 +72,8 @@
                 <source src="img/82077-576973625_small.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
+        </div>
+
         <!-- Section Title -->
         <div class="about-title-container">
             <h2 class="about-title">About Us</h2>
@@ -88,12 +90,10 @@
                 <div class="about-text">
                     <h3>Welcome All<span class="highlight"></span></h3>
                     <p>
-                        Welcome to our Donate+ website. We believe in the power of giving and the positive impact it can
-                        have on lives and communities. Our mission is to make it easy for people to donate essential
-                        items like food, clothing, and technical supplies to those in need. Whether you have extra food
-                        to share, clothes you no longer wear, or tech items that could help others, our platform
-                        connects generous donors with organizations and individuals who can benefit. Join us in creating
-                        a community of compassion and support, where each donation brings hope and a brighter future.
+                        Our mission is to make it easy for people to donate essential items like food, clothing, and
+                        technical supplies to those in need. Whether you have extra food to share, clothes you no longer
+                        wear, or tech items that could help others, our platform connects generous donors with
+                        organizations and individuals who can benefit.
                     </p>
                 </div>
             </div>
@@ -110,14 +110,14 @@
                         generous donors and those in need. Our team has developed an easy-to-use website where anyone
                         can donate essential items like food, clothing, and technical supplies. Over time, we've
                         connected countless donations to families and organizations that benefit directly from your
-                        support, making a real difference in our community. We handle everything from ensuring items
-                        reach the right people to expanding our reach for greater impact. Every donation matters, and
-                        together, we're making a meaningful change."
+                        support, making a real difference in our community.
                     </p>
                 </div>
             </div>
         </div>
     </section>
+
+
 
     <!-- Donation Page -->
     <div class="donation-body" id="donation-body">
@@ -150,14 +150,14 @@
                                     alt="food"></div>
                             <div class="img-2"><img class="selection-img" id="img2" data-type="STATIONERY"
                                     src="img/stationery.jpg" alt="stationery"></div>
-                            <div class="img-3"><img class="selection-img" id="img3" data-type="clothes"
+                            <div class="img-3"><img class="selection-img" id="img3" data-type="CLOTHES"
                                     src="img/dress.jpg" alt="clothes"></div>
                         </div>
                         <div class="input-box">
                             <div class="input-field">
                                 <i class="fa fa-archive" aria-hidden="true"></i>
-                                <input type="text" id="type" name="type" placeholder="Type: Select above image"
-                                    readonly required>
+                                <input type="text" id="type" name="type" placeholder="Type: Select above image" readonly
+                                    required>
                             </div>
                         </div>
 
@@ -167,7 +167,7 @@
                                 <input type="number" id="quantity" name="quantity" placeholder="Quantity" required>
                             </div>
                         </div>
-                        
+
                     </div>
                     <div class="right">
                         <div class="input-box" style="width: 400px;">
@@ -219,7 +219,7 @@
         document.addEventListener("DOMContentLoaded", () => {
             const images = document.querySelectorAll('.selection-img');
             const typeInput = document.querySelector('#type');
-            
+
             images.forEach(image => {
                 image.addEventListener('click', function () {
                     images.forEach(img => img.classList.remove('selected'));
@@ -227,29 +227,29 @@
                     typeInput.value = this.dataset.type; // Set the type value based on selected image
                 });
             });
-    
+
             // Initialize map with CINEC Campus location
             const map = L.map('map').setView([6.9157, 79.9605], 15); // CINEC Campus location
-    
+
             // Add OpenStreetMap tiles
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19
             }).addTo(map);
-    
+
             // Add CINEC Campus marker (Blue)
             const cinecMarker = L.marker([6.9157, 79.9605], { icon: L.icon({ iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png', iconSize: [25, 41], iconAnchor: [12, 41] }) }).addTo(map)
                 .bindPopup("CINEC CAMPUS")
                 .openPopup();
-    
+
             const locationInput = document.querySelector('input[name="address"]');
             const searchButton = document.querySelector('#searchButton');
-    
+
             // Search location when the user presses the search button
             const searchLocation = () => {
                 const city = locationInput.value.trim();
                 if (city) {
                     const apiUrl = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(city)}&format=json&addressdetails=1`;
-    
+
                     fetch(apiUrl, {
                         headers: {
                             'User-Agent': 'DonatePlus/1.0 (your-email@example.com)', // Use your own email or app name
@@ -262,26 +262,26 @@
                                 const { lat, lon } = data[0];
                                 // Set map to the searched city
                                 map.setView([lat, lon], 15);
-                                
+
                                 // Remove any existing user markers before adding a new one
                                 map.eachLayer((layer) => {
                                     if (layer instanceof L.Marker && layer !== cinecMarker) {
                                         map.removeLayer(layer);
                                     }
                                 });
-    
+
                                 // Add user location marker (Red)
                                 const userMarker = L.marker([lat, lon], {
                                     icon: L.icon({
-                                        iconUrl: 'img/map-marker-2-32.png', 
-                                        iconSize: [32, 32], 
-                                        iconAnchor: [16, 32], 
-                                        popupAnchor: [0, -32] 
+                                        iconUrl: 'img/map-marker-2-32.png',
+                                        iconSize: [32, 32],
+                                        iconAnchor: [16, 32],
+                                        popupAnchor: [0, -32]
                                     })
                                 }).addTo(map)
                                     .bindPopup(city)
                                     .openPopup();
-    
+
                                 locationInput.value = city;  // Automatically fill the city name in the input
                             } else {
                                 alert('City not found!');
@@ -293,9 +293,9 @@
                         });
                 }
             };
-    
+
             searchButton.addEventListener('click', searchLocation);
-    
+
             // Handle form submission
             const form = document.querySelector('#donation-form');
             form.addEventListener('submit', (event) => {
@@ -307,7 +307,7 @@
             });
         });
     </script>
-    
+
 
 
 </body>

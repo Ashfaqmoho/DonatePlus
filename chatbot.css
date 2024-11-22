@@ -2,9 +2,16 @@
     box-sizing: border-box;
 }
 
-body {
+body{
+    background-color: #000000;
+}
+
+body .help-container {
     font-family: 'poppins', sans-serif;
     background-image: url('img/istockphoto-1488335095-612x612.jpg') !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 .help-container {
@@ -12,9 +19,10 @@ body {
     margin: 50px auto;
     padding: 20px;
     border-radius: 10px;
-    /* box-shadow: #64646f33 0px 7px 29px 0px; */
+    box-shadow: #64646f33 0px 7px 29px 0px;
     background: #000003fd;
     /* background: #1b1d21; */
+    border: 1px solid white;
 
 }
 
@@ -33,7 +41,6 @@ body {
     padding: 10px;
     border: 2px sold #545250;
     border-radius: 5px;
-    background: #4272d2f4;
 }
 
 .message {

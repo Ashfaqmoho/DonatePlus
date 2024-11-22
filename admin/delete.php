@@ -1,52 +1,37 @@
 <?php
-session_start();
-if (!isset($_SESSION['admindashbord']) || !$_SESSION['admindashbord']) {
-    header("Location: ../admin/admindashboard.php");
-    exit();
-}
-
-
+// Database connection
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "Donation";
+$dbname = "donationdb";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
+// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['name'])) {
-    $name= $conn->real_escape_string($_POST['name']);
-    
-    // Start a transaction
-    $conn->begin_transaction();
+// Check if ID is sent via POST
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
+    $id = intval($_POST['id']); // Sanitize input
 
-    try {
-        // Delete from attendance table
-        $delete_Donation_query = "DELETE FROM Donation WHERE name = ?";
-        $stmt = $conn->prepare($delete_attendance_query);
-        $stmt->bind_param('s', $name);
-        $stmt->execute();
-        $stmt->close();
-        
-        // Delete from student table
-        $delete_Donation_query = "DELETE FROM Donation WHERE name = ?";
-        $stmt = $conn->prepare($delete_donation_query);
-        $stmt->bind_param('s', $name);
-        $stmt->execute();
-        $stmt->close();
-        
-        // Commit the transaction
-        $conn->commit();
-        
-        
-    } catch (Exception $e) {
-        // Rollback the transaction if something goes wrong
-        $conn->rollback();
-        die("Failed to delete Donation: " . $e->getMessage());
+    // Prepare the delete query
+    $stmt = $conn->prepare("DELETE FROM donation WHERE id = ?");
+    $stmt->bind_param("i", $id);
+
+    if ($stmt->execute()) {
+        // Record deleted successfully, redirect to the admin dashboard
+        header("Location: admindashboard.php"); // Redirect to the admin dashboard page
+        exit;
+    } else {
+        // Error deleting record
+        echo "Error deleting record: " . $conn->error;
     }
+
+    $stmt->close();
+} else {
+    echo "Invalid request.";
 }
 
 $conn->close();

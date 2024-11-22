@@ -5,55 +5,54 @@ if (!isset($_SESSION['admindashbord']) || !$_SESSION['admindashbord']) {
     exit();
 }
 
+$servername = "localhost"; 
+$dbusername = "root";      
+$dbpassword = "";      
+$dbname = "donationdb";
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "Donation";
+// Create connection
+$connection = new mysqli($servername, $dbusername, $dbpassword, $dbname);
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// check connection
-if ($conn->connect_error) {
-    die("Connection failed: ". $conn->connect_error);
+// Check connection
+if ($connection->connect_error) {
+    die("Connection failed: ". $connection->connect_error);
 }
-// Fetch data for the given name
 
-$name = $_GET['name'];
+// Fetch data for the given ID
+$id = $_GET['id'];
 
-$sql = "SELECT * FROM donations WHERE name = '$name'";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("name", $name);
+$sql = "SELECT * FROM Donation WHERE id = ?";
+$stmt = $connection->prepare($sql);
+$stmt->bind_param("i", $id);
 $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows == 0) {
-    die("No record found with the given name.");
+    die("No record found with the given ID.");
 }
 
 $row = $result->fetch_assoc();
 
 // Handle form submission for update
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $name = $conn->real_escape_string($_POST['name']);
-    $mail = $conn->real_escape_string($_POST['mail']);
-    $phone = $conn->real_escape_string($_POST['phone']);
-    $type = $conn->real_escape_string($_POST['type']);
-    $quantity = $conn->real_escape_string($_POST['quantity']);
-    $address = $conn->real_escape_string($_POST['address']);
+    $name = $connection->real_escape_string($_POST['name']);
+    $mail = $connection->real_escape_string($_POST['mail']);
+    $phone = $connection->real_escape_string($_POST['phone']);
+    $type = $connection->real_escape_string($_POST['type']);
+    $quantity = $connection->real_escape_string($_POST['quantity']);
+    $address = $connection->real_escape_string($_POST['address']);
 
-    $sql = "UPDATE donations SET mail=?, phone=?, type=?, quantity=?, address=? WHERE name=?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssisss", $mail, $phone, $type, $quantity, $address, $name);
+    $sql = "UPDATE Donation SET name=?, mail=?, phone=?, type=?, quantity=?, address=? WHERE id=?";
+    $stmt = $connection->prepare($sql);
+    $stmt->bind_param("ssisssi", $name, $mail, $phone, $type, $quantity, $address, $id);
     if ($stmt->execute()) {
         header("Location: admindashboard.php");
         exit();
     } else {
-        echo "Error updating record: ". $conn->error;
+        echo "Error updating record: ". $connection->error;
     }
     $stmt->close();
 }
-    $conn->close();
-    ?>
 
-
+$connection->close();
+?>

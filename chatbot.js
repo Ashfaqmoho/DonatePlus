@@ -11,7 +11,7 @@ function chatbox(input){
     } else if(input.includes("what can you do")){
     output = "i can chat with you and answer some simple questions.";
     }else if(input.includes("what we can donate")){
-    output = "You can donate Foods,clothes,Stationary.";
+    output = "You can donate Foods,Clothes,Stationary.";
     } else {
     output = "I'm sorry, I didn't understand that. please try something else.";
     }

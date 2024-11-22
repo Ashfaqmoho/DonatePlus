@@ -1,44 +1,20 @@
--- phpMyAdmin SQL Dump
--- version 4.7.1
--- https://www.phpmyadmin.net/
---
--- Host: sql12.freesqldatabase.com
--- Generation Time: Nov 15, 2024 at 04:02 PM
--- Server version: 5.5.62-0ubuntu0.14.04.1
--- PHP Version: 7.0.33-0ubuntu0.16.04.16
-SET
-  SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+-- SQL Import File for creating the Donation table
 
-SET
-  AUTOCOMMIT = 0;
+CREATE DATABASE IF NOT EXISTS DonationDB;
 
-START TRANSACTION;
+USE DonationDB;
 
-SET
-  time_zone = "+00:00";
+CREATE TABLE IF NOT EXISTS Donation (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    mail VARCHAR(100) NOT NULL,
+    phone VARCHAR(15) NOT NULL,
+    type VARCHAR(50) NOT NULL,
+    quantity INT NOT NULL,
+    address VARCHAR(200) NOT NULL
+);
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */
-;
-
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */
-;
-
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */
-;
-
-/*!40101 SET NAMES utf8mb4 */
-;
-
---
--- Database: `sql12743807`
---
-CREATE TABLE `Donation` (
-  `name` varchar(100) NOT NULL,
-  `mail` varchar(100) NOT NULL,
-  `phone` int(10) NOT NULL,
-  `type` varchar(50) NOT NULL,
-  `quantity` int(10) NOT NULL,
-  `address` varchar(200) NOT NULL
-) ENGINE = InnoDB DEFAULT CHARSET = latin1;
-
-COMMIT;
+-- Insert sample data (optional)
+INSERT INTO Donation (name, mail, phone, type, quantity, address)
+VALUES
+    ('Alice Johnson', 'alice.johnson@example.com', '1234567890', 'Clothes', 10, '123 Elm Street, Springfield');

@@ -1,11 +1,11 @@
 <?php
-$servername = "sql12.freesqldatabase.com";
-$username = "sql12743807";
-$password = "KJRD8HKPaI";
-$dbname = "sql12743807";
+$servername = "localhost"; 
+$dbusername = "root";      
+$dbpassword = "";      
+$dbname = "donationdb";
 
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
 
 // Check connection
 if ($conn->connect_error) {
@@ -21,7 +21,7 @@ $quantity = $_POST['quantity'];
 $address = $_POST['address'];
 
 // Use prepared statements to avoid SQL injection and handle special characters
-$stmt = $conn->prepare("INSERT INTO Donation (name, mail, phone, type, quantity, address) VALUES (?, ?, ?, ?, ?, ?)");
+$stmt = $conn->prepare("INSERT INTO donation (name, mail, phone, type, quantity, address) VALUES (?, ?, ?, ?, ?, ?)");
 $stmt->bind_param("ssisis", $name, $mail, $phone, $type, $quantity, $address);
 
 if ($stmt->execute()) {

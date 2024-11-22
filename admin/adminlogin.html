@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="adminlogin.css">
     <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core@latest/dist/ionic/ionic.esm.js"></script>
     <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core@latest/dist/ionic/ionic.js"></script>
-
-    </head>
+</head>
 
 <body>
     <div class="form-box">
@@ -18,20 +17,13 @@
             <div class="inputbox">
                 <ion-icon name="mail-outline"></ion-icon>
                 <input type="text" id="username" placeholder=" " required>
-                <label for="username">username</label>
+                <label for="username">Username</label>
             </div>
             <div class="inputbox">
                 <ion-icon name="eye-off-outline" onclick="togglePassword()" id="eyeicon"></ion-icon>
                 <input type="password" id="password" placeholder=" " required>
                 <label for="password">Password</label>
             </div>
-            
-            <div class="remember-forgot">
-                <center>
-                    <label><input type="checkbox"> Remember Me</label>
-                </center>
-            </div>
-            
 
             <button type="submit">Sign In</button>
         </form>
@@ -49,25 +41,20 @@
                 eyeIcon.name = "eye-off-outline"; // Change to "eye-off" icon
             }
         }
-        
+
         function logintoadmin(event) {
-            event.preventDefault(); // Prevent form from reloading the page
-            const username = document.getElementById("username").value;
-            const password = document.getElementById("password").value;
+            event.preventDefault();
 
-            const adminUsername = "admin";
-            const adminPassword = "123";
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value.trim();
 
-            if (username === adminUsername && password === adminPassword)  {
-                window.location.href = "../admin/admindashboard.php";
+            // Hardcoded credentials
+            if (username === "admin" && password === "1234") {
+                window.location.href = "admindashboard.php"; // Redirect on success
             } else {
-                alert("Incorrect username or password.");
+                alert("Invalid username or password!");
             }
-            return false;//prevent from submission
         }
-            
-    
-
     </script>
 </body>
 
